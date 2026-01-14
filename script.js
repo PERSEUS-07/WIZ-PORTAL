@@ -89,3 +89,13 @@ btn.onclick = () => {
         btn.innerText = "▶ Play Music";
     }
 };
+
+
+const slider = document.querySelector('.top-scroll');
+
+slider.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    slider.scrollLeft += e.deltaY;
+});
+
+
