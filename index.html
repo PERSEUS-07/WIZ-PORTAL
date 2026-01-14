@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WizKlub Study Portal</title>
+    <link rel="icon" type="image/png" href="title.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+body { 
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+    background: #11202E url("ASSETS/BG.png") no-repeat center top;
+    background-size: cover;
+    background-attachment: scroll; 
+    background-position: left 150px top -120px ;
+    opacity: 0.9;
+    color: white; 
+}
+
+
+        header { background: #11141c; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; border-bottom: 2px solid cyan; }
+
+        /* Sidebar */
+        .sidebar { width: 250px; background: #151922; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 120px; border-right: 2px solid cyan; }
+        .sidebar a { display: block; padding: 15px 20px; color: white; text-decoration: none; transition: 0.3s; font-size: 18px; }
+        .sidebar a:hover { background: cyan; color: black; }
+
+        /* Main Content */
+        .content {
+    margin-left: 270px;
+    margin-right: 50px;
+    padding: 50px;
+}
+
+
+
+        .section { display: none; }
+        .active { display: block; }
+
+        h2 { color: cyan; }
+        .card { background: #1a1f2b; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #2b3247; }
+        .card a { display: block; padding: 8px 0; color: white; text-decoration: none; }
+        .card a:hover { color: cyan; }
+        h1 { color: rgba(255, 243, 218, 0.99); }
+        .card { background: #1a1f2b; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #2b3247; }
+        .card a { display: block; padding: 8px 0; color: white; text-decoration: none; }
+        .card a:hover { color: cyan; }
+    </style>
+</head>
+<body>
+    <header>WizKlub Study Portal<div id="clock"></div></header>
+<audio id="bgMusic" loop>
+    <source src="music/study.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">▶ Play Music</button>
+
+    <div class="sidebar">
+        <a onclick="show('home')">🏘️Home</a>
+        <a onclick="show('ncert')">📖NCERT Books</a>
+        <a onclick="show('notes')">📄Notes & Materials</a>
+        <a onclick="show('extra')">✨Extra Study Stuff</a>
+        <a onclick="show('wiz')">🤖WizKlub Special</a>
+    </div>
+
+    <div class="content">
+
+        <!-- HOME -->
+        <div id="home" class="section active">
+            <h1>HOME</h1>
+            <h2>Dashboard</h2>
+            <div class="card">Welcome back, future scholar! Your NCERT books are not just textbooks—they are the foundation of your knowledge.<br>Remember that true learning doesn't stop at memorization. To excel, you must strive for conceptual clarity. Ask "Why?" and "How?"</div>
+<div class="card notice">
+    <h3>📌 Important Notes</h3>
+    <ul>
+        <li>🔍 Set browser zoom to <b>90%</b> for best layout.</li>
+        <li>💻 Best viewed on desktop or laptop.</li>
+        <li>📂 Click folders to expand subjects and books.</li>
+        <li>🧭 Use the sidebar to switch sections.</li>
+        <li>🎵 Click Play Music button to enable study music.</li>
+    </ul>
+</div>
+        </div>
+
+        <!-- NCERT -->
+        <div id="ncert" class="section">
+            <h2>NCERT Books</h2>
+            <div class="card">
+                <a href="pdf/class6.html">Class 6</a>
+                <a href="pdf/class7.html">Class 7</a>
+                <a href="pdf/class8.html">Class 8</a>
+                <a href="pdf/class9.html">Class 9</a>
+                <a href="pdf/class10.html">Class 10</a>
+                <a href="pdf/class11.html">Class 11</a>
+                <a href="pdf/class12.html">Class 12</a>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div id="notes" class="section">
+            <h2>Notes & Materials</h2>
+            <div class="card">
+                <a href="coming soon/comingsoon.html">Maths Notes</a>
+                <a href="coming soon/comingsoon.html">Science Notes</a>
+                <a href="coming soon/comingsoon.html">English Notes</a>
+                <a href="coming soon/comingsoon.html">Social Studies Notes</a>
+                <a href="coming soon/comingsoon.html">Formula Sheets</a>
+            </div>
+        </div>
+
+        <!-- Extra -->
+        <div id="extra" class="section">
+            <h2>Extra Study Stuff</h2>
+            <div class="card">
+                <a href="coming soon/comingsoon.html">Sample Papers</a>
+                <a href="coming soon/comingsoon.html">Question Banks</a>
+                <a href="coming soon/comingsoon.html">Previous Year Papers</a>
+                <a href="coming soon/comingsoon.html">Practice Worksheets</a>
+            </div>
+        </div>
+
+        <!-- WizKlub -->
+        <div id="wiz" class="section">
+            <h2>WizKlub Special</h2>
+            <div class="card">
+                <a href="coming soon/comingsoon.html">Projects</a>
+                <a href="coming soon/comingsoon.html">Coding Resources</a>
+                <a href="coming soon/comingsoon.html">AI Tools</a>
+            </div>
+        </div>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

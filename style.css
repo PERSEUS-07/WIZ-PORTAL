@@ -1,0 +1,268 @@
+/* PAGE BASE */
+body {
+    margin: 0; 
+    font-family: Arial, sans-serif; 
+    background: #11202E url("ASSETS/BG.png") no-repeat center top;
+    background-size: cover;
+    background-attachment: scroll; 
+    background-position: left 150px top -120px ;
+    opacity: 0.9.;
+    color: white; 
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+}
+
+.title .t1{
+    text-align: center;
+    text-shadow: 0 0 6px #34FFD7;
+    color: #34FFD7;
+    margin-bottom: 0px;
+}
+.title .t2 {
+    text-align: center;
+    text-shadow: 0 0 6px #34FFD7;
+    color: #101F2C;
+    margin-bottom: 30px;
+}
+
+/* MAIN FOLDER (big grade button) */
+.folder {
+    background: rgba(0, 10, 10, 0.5);
+    border: 1px solid cyan;
+    color: cyan;
+    text-shadow: 0 0 6px cyan;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: block;
+}
+
+/* Hover for folders */
+.folder:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.folder.small:hover {
+    background: rgba(0, 0, 0, 0.22);
+}
+
+/* Smaller folder (Maths / Science / English / Social Science) */
+.folder.small {
+    font-size: 0.9rem;
+    margin-left: 10px;
+    background: rgba(0,200,200,0.50);
+}
+
+.folder.small.small {
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+
+/* Subfolder container */
+.subfolder {
+    margin-left: 20px;
+    display: none;
+}
+
+.subfolder.small {
+    font-size: 0.9rem;
+    margin-left: 35px;
+}
+
+/* SUBJECT LINKS – this was your issue */
+.subject {
+    text-decoration: none;
+    display: block;
+    margin: 8px 0 8px 10px;
+    padding: 10px 14px;
+    background: rgba(0,200,200,0.50);
+    border: 1px solid cyan;
+    border-radius: 6px;
+    color: cyan;
+    text-shadow: 0 0 6px cyan;
+    transition: 0.2s;
+}
+
+.subject:hover {
+    background: rgba(0,0,0,0.22);
+}
+
+/* FILES (History / Civics / Geography) */
+.file {
+    text-decoration: none;
+    display: block;
+    margin: 6px 0 6px 10px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid cyan;
+    border-radius: 6px;
+    color: white;
+    text-shadow: 0 0 8px cyan;
+    transition: 0.2s;
+}
+
+.file:hover {
+    background: rgba(255, 255, 255, 0.002);
+}
+
+.header-logo {
+  width: 80px;
+  height: 80px;
+  background-image: url("title.png");
+  background-size: cover;
+  background-position: center;
+  display: block;
+  margin: auto;
+}
+
+.click-animate {
+    transform: scale(0.92);
+    filter: brightness(1.2);
+    transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+#clock {
+    font-size: 15px;
+    color: #34FFD7;
+    margin-top: 6px;
+    letter-spacing: 1.5px;
+    text-shadow: 
+        0 0 5px #34FFD7,
+        0 0 10px #34FFD7,
+        0 0 18px rgba(52, 255, 215, 0.8);
+    animation: glowPulse 2s infinite alternate;
+}
+
+/* Soft breathing glow */
+@keyframes glowPulse {
+    from {
+        text-shadow:
+            0 0 4px #34FFD7,
+            0 0 8px #34FFD7,
+            0 0 12px rgba(52,255,215,0.6);
+    }
+    to {
+        text-shadow:
+            0 0 8px #34FFD7,
+            0 0 16px #34FFD7,
+            0 0 26px rgba(52,255,215,1);
+    }
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple span {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleAnim 600ms linear;
+    background: rgba(52, 255, 215, 0.45);
+    pointer-events: none;
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+
+.folder,
+.file,
+.subject,
+.sidebar a,
+.card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.folder:hover,
+.file:hover,
+.subject:hover,
+.sidebar a:hover,
+.card:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 
+        0 6px 18px rgba(0, 255, 255, 0.25),
+        0 0 12px rgba(52, 255, 215, 0.35);
+}
+
+#musicBtn {
+    position: absolute;
+    top: 20px;
+    left: 280px;
+    background: transparent;
+    border: 2px solid cyan;
+    color: cyan;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 8px cyan;
+    box-shadow: 0 0 12px rgba(0,255,255,0.4);
+    transition: 0.2s;
+}
+
+#musicBtn:hover {
+    background: cyan;
+    color: black;
+}
+
+
+.notice {
+    border: 1px solid cyan;
+    box-shadow: 0 0 12px rgba(0,255,255,0.4);
+}
+
+.notice h3 {
+    color: cyan;
+    text-shadow: 0 0 6px cyan;
+}
+
+.notice ul {
+    padding-left: 20px;
+}
+
+.notice li {
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.coming-soon-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.coming-soon-wrapper text {
+    font-family: 'Pacifico', cursive;
+    font-size: 55px;
+    fill: #34FFD7; /* Matches your theme */
+    
+    /* Neon Glow Effect */
+    filter: drop-shadow(0 0 5px #34FFD7) 
+            drop-shadow(0 0 15px rgba(52, 255, 214, 0.7));
+    
+    /* Slight tilt for extra 'slanted' look */
+    transform-origin: center;
+    transform: rotate(-2deg); 
+}
+
+/* Optional: Subtle breathing animation like your clock */
+.coming-soon-wrapper text {
+    animation: curveGlow 2s infinite alternate;
+}
+
+@keyframes curveGlow {
+    from { filter: drop-shadow(0 0 5px #34FFD7); }
+    to { filter: drop-shadow(0 0 15px #34FFD7) drop-shadow(0 0 25px #34FFD7); }
+}
+

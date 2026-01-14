@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WizKlub Study Portal</title>
+    <link rel="icon" type="image/png" href="../title.png">
+    <link rel="stylesheet" href="../style.css">
+<style>
+        header { background: #11141c; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; border-bottom: 2px solid cyan; }
+
+        /* Sidebar */
+        .sidebar { width: 250px; background: #151922; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 120px; border-right: 2px solid cyan; }
+        .sidebar a { display: block; padding: 15px 20px; color: white; text-decoration: none; transition: 0.3s; font-size: 18px; }
+        .sidebar a:hover { background: cyan; color: black; }
+
+        /* Main Content */
+        .content { margin-left: 270px; padding: 30px; }
+
+        .section { display: none; }
+        .active { display: block; }
+
+        h2 { color: cyan; }
+        .card { background: #1a1f2b; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #2b3247; }
+        .card a { display: block; padding: 8px 0; color: white; text-decoration: none; }
+        .card a:hover { color: cyan; }
+    </style>
+
+</head>
+<body>
+
+     <header>WizKlub Study Portal<div id="clock"></div></header>
+<audio id="bgMusic" loop>
+    <source src="../music/study.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">▶ Play Music</button>
+
+
+<div class="sidebar">
+    <a href="../index.html#home">🏘️Home</a>
+    <a href="../index.html#ncert">📖NCERT Books</a>
+    <a href="../index.html#notes">📄Notes & Materials</a>
+    <a href="../index.html#extra">✨Extra Study Stuff</a>
+    <a href="../index.html#wiz">🤖WizKlub Special</a>
+</div>
+
+
+<div class="container">
+
+    <h1 class="title" style="text-align:center;">
+  <span class="t1">NCERT Bo</span><span class="t2">oks</span>
+</h1>
+
+    <!-- Grade 7 Folder -->
+    <div class="folder" onclick="toggle('grade7')">
+        7️⃣ Grade 7
+    </div>
+
+    <div id="grade7" class="subfolder">
+
+        <a class="subject" href="https://jupiteracademy.co.in/wp-content/uploads/2021/12/CLASS-7-MATHS.zip" target="_blank">📔 Mathematics</a>
+    <a class="subject" href="https://ncert.nic.in/textbook/pdf/gesc1dd.zip" target="_blank">🧠 Science</a>
+
+        <!-- English Folder -->
+        <div class="folder small" onclick="toggle('grade7_english')">
+            📚 English
+        </div>
+
+        <div id="grade7_english" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/gehc1dd.zip" target="_blank">🍯 Honeycomb</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/geah1dd.zip" target="_blank">🍥 An Alien Hand</a>
+            
+        </div>
+        <!-- Social Science Folder -->
+        <div class="folder small" onclick="toggle('grade7_social')">
+            🗺️ Social Science
+        </div>
+
+        <div id="grade7_social" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/gess1dd.zip" target="_blank">📜 History</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/gess3dd.zip" target="_blank">🏛️ Civics</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/gess2dd.zip" target="_blank">🌍 Geography</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>

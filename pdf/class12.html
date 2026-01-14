@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WizKlub Study Portal</title>
+    <link rel="icon" type="image/png" href="../title.png">
+    <link rel="stylesheet" href="../style.css">
+<style>
+
+        header { background: #11141c; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; border-bottom: 2px solid cyan; }
+
+        /* Sidebar */
+        .sidebar { width: 250px; background: #151922; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 120px; border-right: 2px solid cyan; }
+        .sidebar a { display: block; padding: 15px 20px; color: white; text-decoration: none; transition: 0.3s; font-size: 18px; }
+        .sidebar a:hover { background: cyan; color: black; }
+
+        /* Main Content */
+        .content { margin-left: 270px; padding: 30px; }
+
+        .section { display: none; }
+        .active { display: block; }
+
+        h2 { color: cyan; }
+        .card { background: #1a1f2b; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #2b3247; }
+        .card a { display: block; padding: 8px 0; color: white; text-decoration: none; }
+        .card a:hover { color: cyan; }
+    </style>
+
+</head>
+<body>
+
+    <header>WizKlub Study Portal<div id="clock"></div></header>
+<audio id="bgMusic" loop>
+    <source src="../music/study.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">▶ Play Music</button>
+
+
+<div class="sidebar">
+    <a href="../index.html#home">🏘️Home</a>
+    <a href="../index.html#ncert">📖NCERT Books</a>
+    <a href="../index.html#notes">📄Notes & Materials</a>
+    <a href="../index.html#extra">✨Extra Study Stuff</a>
+    <a href="../index.html#wiz">🤖WizKlub Special</a>
+</div>
+
+<div class="container">
+
+    <h1 class="title" style="text-align:center;">
+  <span class="t1">NCERT Bo</span><span class="t2">oks</span>
+</h1>
+
+    <!-- Grade 12 Folder -->
+    <div class="folder" onclick="toggle('grade12')">
+    1️2️⃣  Grade 12
+</div>
+
+<div id="grade12" class="subfolder">
+
+<!-- Math Folder -->
+
+        <div class="folder small" onclick="toggle('grade12_math')">
+            📔 Math
+        </div>
+
+        <div id="grade12_math" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/ncerts/l/lemh1dd.zip" target="_blank">📔 Part-1</a>
+            <a class="file" href="https://ncert.nic.in/ncerts/l/lemh2dd.zip" target="_blank">📔 Part-2</a>
+</div>
+
+
+ <!-- Science Folder -->
+        <div class="folder small" onclick="toggle('grade12_science')">
+            🧠 Science
+        </div>
+
+        <div id="grade12_science" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/ncerts/l/lebo1dd.zip" target="_blank">🧬 Biology</a>
+<div class="file" onclick="toggle('grade12_phy')">
+        🚀 Physics
+    </div>
+
+    <div id="grade12_phy" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/ncerts/l/leph1dd.zip" target="_blank">🚀Physics-1</a>
+        <a class="file" href="https://ncert.nic.in/ncerts/l/leph2dd.zip" target="_blank">🚀Physics-2</a>
+    </div>
+<div class="file" onclick="toggle('grade12_che')">
+        🧪 Chemistry
+    </div>
+
+    <div id="grade12_che" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/ncerts/l/lech1dd.zip" target="_blank">🧪Chemistry-1</a>
+        <a class="file" href="https://ncert.nic.in/ncerts/l/lech2dd.zip" target="_blank">🧪Chemistry-2</a>
+
+    </div>
+
+</div>
+            
+ <!-- English Folder -->
+
+        <div class="folder small" onclick="toggle('grade12_english')">
+            📚 English
+        </div>
+
+        <div id="grade12_english" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/lefl1dd.zip" target="_blank">🍥 Flamingo</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/lekl1dd.zip" target="_blank">🍥 Kaleidoscope</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/levt1dd.zip" target="_blank">🍥 Vistas</a>
+
+
+</div>
+            
+
+    <!-- Social Science Folder -->
+    <div class="folder small" onclick="toggle('grade12_social')">
+        🗺️ Social Science
+    </div>
+
+    <div id="grade12_social" class="subfolder small">
+
+<div class="file" onclick="toggle('grade12_his')">
+        📜 History
+    </div>
+
+    <div id="grade12_his" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lehs1dd.zip" target="_blank">📜Themes in Indian History 1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lehs2dd.zip" target="_blank">📜Themes in Indian History 2</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lehs3dd.zip" target="_blank">📜Themes in Indian History 3</a>
+
+    </div>
+<div class="file" onclick="toggle('grade12_civ')">
+        🏛️ Civics
+    </div>
+
+    <div id="grade12_civ" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/leps1dd.zip" target="_blank">🏛️Contemporary World Politics 1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/leps2dd.zip" target="_blank">🏛️Contemporary World Politics 2</a>
+
+    </div>
+<div class="file" onclick="toggle('grade12_geo')">
+        🌍 Geography
+    </div>
+
+    <div id="grade12_geo" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/legy1dd.zip" target="_blank">🌍Fundamentals of Human Geography</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/legy2dd.zip" target="_blank">🌍India -People and Economy</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/legy3dd.zip" target="_blank">🌍Practical Working Geography</a>
+
+    </div>
+
+<div class="file" onclick="toggle('grade12_com')">
+       📈 Commerce
+    </div>
+
+    <div id="grade12_com" class="subfolder small">
+
+<div class="file" onclick="toggle('grade12_acc')">
+        💰 Accountancy
+    </div>
+
+    <div id="grade12_acc" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/leac1dd.zip" target="_blank">💰Accountancy Part 1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/leac2dd.zip" target="_blank">💰Accountancy Part 2</a>
+
+    </div>
+<div class="file" onclick="toggle('grade12_bus')">
+        💼 Business
+    </div>
+
+    <div id="grade12_bus" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lebs1dd.zip" target="_blank">💼Business Studies Part 1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lebs2dd.zip" target="_blank">💼Business Studies Part 2s</a>
+
+    </div>
+<div class="file" onclick="toggle('grade12_eco')">
+        📊 Economics
+    </div>
+
+    <div id="grade12_eco" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/leec2dd.zip" target="_blank">📊Microeconomics</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/leec1dd.zip" target="_blank">📊Macroeconomics</a>
+
+    </div>
+</div>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lepy1dd.zip" target="_blank">🔱Psychology</a>
+<div class="file" onclick="toggle('grade12_soc')">
+        👨‍👩‍👧‍👦 Sociology
+    </div>
+
+    <div id="grade12_soc" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lesy1dd.zip" target="_blank">👨‍👩‍👧‍👦Indian Society</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/lesy2dd.zip" target="_blank">👨‍👩‍👧‍👦Change and Development India</a>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>

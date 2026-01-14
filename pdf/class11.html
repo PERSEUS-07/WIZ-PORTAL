@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WizKlub Study Portal</title>
+    <link rel="icon" type="image/png" href="../title.png">
+    <link rel="stylesheet" href="../style.css">
+<style>
+
+        header { background: #11141c; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; border-bottom: 2px solid cyan; }
+
+        /* Sidebar */
+        .sidebar { width: 250px; background: #151922; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 120px; border-right: 2px solid cyan; }
+        .sidebar a { display: block; padding: 15px 20px; color: white; text-decoration: none; transition: 0.3s; font-size: 18px; }
+        .sidebar a:hover { background: cyan; color: black; }
+
+        /* Main Content */
+        .content { margin-left: 270px; padding: 30px; }
+
+        .section { display: none; }
+        .active { display: block; }
+
+        h2 { color: cyan; }
+        .card { background: #1a1f2b; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #2b3247; }
+        .card a { display: block; padding: 8px 0; color: white; text-decoration: none; }
+        .card a:hover { color: cyan; }
+    </style>
+
+</head>
+<body>
+
+    <header>WizKlub Study Portal<div id="clock"></div></header>
+<audio id="bgMusic" loop>
+    <source src="../music/study.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">▶ Play Music</button>
+
+
+<div class="sidebar">
+    <a href="../index.html#home">🏘️Home</a>
+    <a href="../index.html#ncert">📖NCERT Books</a>
+    <a href="../index.html#notes">📄Notes & Materials</a>
+    <a href="../index.html#extra">✨Extra Study Stuff</a>
+    <a href="../index.html#wiz">🤖WizKlub Special</a>
+</div>
+
+<div class="container">
+
+    <h1 class="title" style="text-align:center;">
+  <span class="t1">NCERT Bo</span><span class="t2">oks</span>
+</h1>
+
+    <!-- Grade 11 Folder -->
+    <div class="folder" onclick="toggle('grade11')">
+    1️⃣1️⃣ Grade 11
+</div>
+
+<div id="grade11" class="subfolder">
+
+    <a class="subject" href="https://ncert.nic.in/textbook/pdf/kemh1dd.zip" target="_blank">📔 Mathematics</a>
+
+ <!-- Science Folder -->
+        <div class="folder small" onclick="toggle('grade11_science')">
+            🧠 Science
+        </div>
+
+        <div id="grade11_science" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/kebo1dd.zip" target="_blank">🧬 Biology</a>
+<div class="file" onclick="toggle('grade11_phy')">
+        🚀 Physics
+    </div>
+
+    <div id="grade11_phy" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keph1dd.zip" target="_blank">🚀Physics-1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keph2dd.zip" target="_blank">🚀Physics-2</a>
+    </div>
+<div class="file" onclick="toggle('grade11_che')">
+        🧪 Chemistry
+    </div>
+
+    <div id="grade11_che" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kech1dd.zip" target="_blank">🧪Chemistry-1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kech2dd.zip" target="_blank">🧪Chemistry-2</a>
+
+    </div>
+
+</div>
+            
+ <!-- English Folder -->
+
+        <div class="folder small" onclick="toggle('grade11_english')">
+            📚 English
+        </div>
+
+        <div id="grade11_english" class="subfolder small">
+
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/kehb1dd.zip" target="_blank">🍯 Hornbill</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/kesp1dd.zip" target="_blank">🍥 Snapshots</a>
+            <a class="file" href="https://ncert.nic.in/textbook/pdf/keww1dd.zip" target="_blank">🍥 Woven Words</a>
+
+</div>
+            
+
+    <!-- Social Science Folder -->
+    <div class="folder small" onclick="toggle('grade11_social')">
+        🗺️ Social Science
+    </div>
+
+    <div id="grade11_social" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kehs1dd.zip" target="_blank">📜 History</a>
+<div class="file" onclick="toggle('grade11_civ')">
+        🏛️ Civics
+    </div>
+
+    <div id="grade11_civ" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keps1dd.zip" target="_blank">🏛️Political Theory</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keps2dd.zip" target="_blank">🏛️Indian Constitution at Work</a>
+
+    </div>
+<div class="file" onclick="toggle('grade11_geo')">
+        🌍 Geography
+    </div>
+
+    <div id="grade11_geo" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kegy1dd.zip" target="_blank">🌍 Indian Physical Environment</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kegy2dd.zip" target="_blank">🌍 Fundamentals of Physical Geography</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kegy3dd.zip" target="_blank">🌍 Practical Work in Geography</a>
+
+    </div>
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keec1dd.zip" target="_blank">📊 Economics</a>
+<div class="file" onclick="toggle('grade11_acc')">
+        💰 Accountancy
+    </div>
+
+    <div id="grade11_acc" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keac1dd.zip" target="_blank">💰Financial Accounting – 1</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/keac2dd.zip" target="_blank">💰Financial Accounting – 2</a>
+
+    </div>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kebs1dd.zip" target="_blank">💼Business</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kepy1dd.zip" target="_blank">🔱Psychology</a>
+<div class="file" onclick="toggle('grade11_soc')">
+        👨‍👩‍👧‍👦 Sociology
+    </div>
+
+    <div id="grade11_soc" class="subfolder small">
+
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kesy1dd.zip" target="_blank">👨‍👩‍👧‍👦Introducing Sociology</a>
+        <a class="file" href="https://ncert.nic.in/textbook/pdf/kesy2dd.zip" target="_blank">👨‍👩‍👧‍👦Understanding Society</a>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>
