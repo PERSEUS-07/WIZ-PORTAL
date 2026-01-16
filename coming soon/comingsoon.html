@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 
 <style>
 
@@ -18,6 +19,20 @@
     align-items: center; 
     height: 50vh;   /* Decrease this (e.g., 50vh) to move it UP */
     margin-top: 90px; /* Increase this to push it DOWN */
+}
+
+@media screen and (max-width: 768px) {
+
+    .coming-soon-wrapper {
+        margin-left: 0 !important;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .coming-soon-wrapper svg {
+        max-width: 100%;
+    }
+
 }
 
 .coming-soon-wrapper text {
@@ -34,120 +49,39 @@
     transform: rotate(-2deg); 
 }
 
-/* Optional: Subtle breathing animation like your clock */
-.coming-soon-wrapper text {
-    animation: curveGlow 2s infinite alternate;
-}
-
-@keyframes curveGlow {
-    from { filter: drop-shadow(0 0 5px #34FFD7); }
-    to { filter: drop-shadow(0 0 15px #34FFD7) drop-shadow(0 0 25px #34FFD7); }
-}
-
-#musicBtn {
-    position: absolute;
-    top: 20px;
-    left: 280px;
-    background: transparent;
-    border: 2px solid cyan;
-    color: cyan;
-    padding: 6px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-shadow: 0 0 8px cyan;
-    box-shadow: 0 0 12px rgba(0,255,255,0.4);
-    transition: 0.2s;
-}
-
-#musicBtn:hover {
-    background: cyan;
-    color: black;
-}
-
-.header-logo {
-  width: 80px;
-  height: 80px;
-  background-image: url("title.png");
-  background-size: cover;
-  background-position: center;
-  display: block;
-  margin: auto;
-}
-
-.click-animate {
-    transform: scale(0.92);
-    filter: brightness(1.2);
-    transition: transform 0.12s ease, filter 0.12s ease;
-}
-
-#clock {
-    font-size: 15px;
-    color: #34FFD7;
-    margin-top: 6px;
-    letter-spacing: 1.5px;
-    text-shadow: 
-        0 0 5px #34FFD7,
-        0 0 10px #34FFD7,
-        0 0 18px rgba(52, 255, 215, 0.8);
-    animation: glowPulse 2s infinite alternate;
-}
-
-/* Soft breathing glow */
-@keyframes glowPulse {
-    from {
-        text-shadow:
-            0 0 4px #34FFD7,
-            0 0 8px #34FFD7,
-            0 0 12px rgba(52,255,215,0.6);
-    }
-    to {
-        text-shadow:
-            0 0 8px #34FFD7,
-            0 0 16px #34FFD7,
-            0 0 26px rgba(52,255,215,1);
-    }
-}
-
 body {
-    margin: 0; 
-    font-family: Arial, sans-serif; 
-    background: #0A141C no-repeat center top;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #11202E no-repeat center top;
     background-size: cover;
-    background-attachment: scroll; 
-    background-position: left 150px top -120px ;
-    opacity: 0.9.;
-    color: white; 
+    background-attachment: scroll;
+    background-position: left 150px top -120px;
+    opacity: 0.95;
+    color: white;
 }
 
-.container {
-    max-width: 500px;
-    margin: auto;
+body.red-mode .coming-soon-wrapper text {
+    font-family: 'Pacifico', cursive;
+    font-size: 55px;
+    fill: #FF3131; /* Matches your theme */
+    
+    /* Neon Glow Effect */
+    filter: drop-shadow(0 0 5px #FF3131) 
+            drop-shadow(0 0 15px rgba(255, 0, 20, 0.7));
+    
+    /* Slight tilt for extra 'slanted' look */
+    transform-origin: center;
+    transform: rotate(-2deg); 
 }
-
-        header { background: #11141c; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; border-bottom: 2px solid cyan; }
-
-        /* Sidebar */
-        .sidebar { width: 250px; background: #151922; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 120px; border-right: 2px solid cyan; }
-        .sidebar a { display: block; padding: 15px 20px; color: white; text-decoration: none; transition: 0.3s; font-size: 18px; }
-        .sidebar a:hover { background: cyan; color: black; }
-
-        /* Main Content */
-        .content { margin-left: 270px; padding: 30px; }
-
-        .section { display: none; }
-        .active { display: block; }
-
-        h2 { color: cyan; }
-        .card { background: #1a1f2b; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #2b3247; }
-        .card a { display: block; padding: 8px 0; color: white; text-decoration: none; }
-        .card a:hover { color: cyan; }
-
-
     </style>
 </head>
 <body>
 
-     <header>WizKlub Study Portal<div id="clock"></div></header>
+<header class="header-logo">
+    WizKlub Study Portal
+    <div id="clock"></div>
+    <div id="greeting"></div>
+</header>
 
 <audio id="bgMusic" loop>
     <source src="../music/study.mp3" type="audio/mpeg">
@@ -175,7 +109,7 @@ body {
         </text>
     </svg>
 </div>
-
+<div id="easterToast"></div>
 <script src="../script.js"></script>
 </body>
 </html>
