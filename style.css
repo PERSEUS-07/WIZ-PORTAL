@@ -151,6 +151,11 @@ h2 { color: cyan; }
     margin-left: 35px;
 }
 
+.folder.small:hover {
+    background: rgba(0,0,0,0.22);
+}
+
+
 .subject {
     text-decoration: none;
     display: block;
@@ -394,6 +399,332 @@ h2 { color: cyan; }
 .top-scroll::-webkit-scrollbar {
     height: 0 !important;
     display: none !important;
+}
+
+/* 🌌 Page Fade In Animation */
+body {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.985);
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+}
+
+
+/* 🚦 Active Navigation Button */
+.sidebar a.active {
+    background: rgba(52,255,215,0.15);
+    border-left: 4px solid cyan;
+    color: cyan;
+    text-shadow: 0 0 8px cyan;
+    box-shadow: inset 0 0 12px rgba(52,255,215,0.4);
+}
+
+#greeting {
+    font-size: 14px;
+    color: #34FFD7;
+    margin-top: 4px;
+    text-shadow: 0 0 6px rgba(52,255,215,0.6);
+    letter-spacing: 1px;
+}
+
+/* 🥚 Easter Egg Flying Toast */
+#easterToast {
+    position: fixed;
+    top: 90px;
+    right: -400px;
+    background: linear-gradient(135deg, #0b141f, #11202e);
+    color: #FF3131;
+    padding: 14px 26px;
+    border-radius: 12px;
+    border: 1px solid red;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255,0,20,0.7);
+    box-shadow: 0 0 18px rgba(255,0,20,0.45);
+    transform: rotate(-6deg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Fly in animation */
+#easterToast.show {
+    animation: toastFly 3.5s ease forwards;
+}
+
+@keyframes toastFly {
+    0% {
+        right: -420px;
+        opacity: 0;
+    }
+    15% {
+        right: 40px;
+        opacity: 1;
+    }
+    80% {
+        right: 40px;
+        opacity: 1;
+    }
+    100% {
+        right: -420px;
+        opacity: 0;
+    }
+}
+
+
+/* 🔴RED RED RED RED RED MODE OVERRIDE */
+body.red-mode {
+    background-color: #120000;
+}
+
+body.red-mode header {
+    border-bottom: 2px solid #ff2a2a;
+}
+
+body.red-mode .sidebar {
+    border-right: 2px solid #ff2a2a;
+}
+
+body.red-mode h2,
+body.red-mode #clock,
+body.red-mode #greeting {
+    color: #ff2a2a;
+    text-shadow: 0 0 10px rgba(255,40,40,0.9);
+}
+
+@keyframes glowPulseRed {
+    from {
+        text-shadow:
+            0 0 4px #FF3131,
+            0 0 8px #FF3131,
+            0 0 12px rgba(255,40,40,0.6);
+    }
+    to {
+        text-shadow:
+            0 0 8px #FF3131,
+            0 0 16px #FF3131,
+            0 0 26px rgba(255,40,40,1);
+    }
+}
+body.red-mode #clock {
+    animation: glowPulseRed 2s infinite alternate;
+    color: #FF3131;
+}
+
+
+body.red-mode .sidebar a.active {
+    background: rgba(255,40,40,0.15);
+    border-left: 4px solid #ff2a2a;
+    color: #ff2a2a;
+    text-shadow: 0 0 10px rgba(255,40,40,0.9);
+}
+
+body.red-mode .card {
+    border: 1px solid rgba(255,40,40,0.4);
+    box-shadow: 0 0 12px rgba(255,40,40,0.3);
+}
+
+body.red-mode #musicBtn {
+    position: absolute;
+    top: 20px;
+    left: 280px;
+    background: transparent;
+    border: 2px solid red;
+    color: red;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-shadow: 0 0 8px red;
+    box-shadow: 0 0 12px rgba(255,0,0,0.4);
+    transition: 0.2s;
+}
+
+body.red-mode #musicBtn:hover {
+    background: red;
+    color: black;
+}
+
+body.red-mode .sidebar a.active {
+    background: rgba(255,0,20,0.15);
+    border-left: 4px solid red;
+    color: red;
+    text-shadow: 0 0 8px red;
+    box-shadow: inset 0 0 12px rgba(255,0,20,0.4);
+}
+
+body.red-mode #greeting {
+    font-size: 14px;
+    color: #FF3131;
+    margin-top: 4px;
+    text-shadow: 0 0 6px rgba(255,0,20,0.6);
+    letter-spacing: 1px;
+}
+
+body.red-mode .sidebar a:hover {
+    background: red;
+    color: black;
+}
+body.red-mode .card a:hover { color: red; }
+
+body.red-mode .folder:hover,
+body.red-mode .file:hover,
+body.red-mode .subject:hover,
+body.red-mode .sidebar a:hover,
+body.red-mode .card:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 
+        0 6px 18px rgba(255,0,20, 0.25),
+        0 0 12px rgba(255,0,20, 0.35);
+}
+
+body.red-mode .title .t1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+
+    /* Smart readable neon */
+    color: #FF3131;
+
+    /* Dual glow for dark + neon backgrounds */
+    text-shadow:
+        0 0 4px rgba(0,0,0,0.9),
+        0 0 8px rgba(0,0,0,0.7),
+        0 0 12px rgba(255,0,20,0.7),
+        0 0 20px rgba(255,0,20,0.4);
+}
+
+body.red-mode .folder {
+    background: rgba(10, 0, 0, 0.5);
+    border: 1px solid red;
+    color: red;
+    text-shadow: 0 0 6px red;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: block;
+}
+
+body.red-mode .folder.small {
+    font-size: 0.9rem;
+    margin-left: 10px;
+    background: rgba(200,0,0,0.50);
+}
+
+body.red-mode .subject {
+    text-decoration: none;
+    display: block;
+    margin: 8px 0 8px 10px;
+    padding: 10px 14px;
+    background: rgba(200,0,0,0.50);
+    border: 1px solid red;
+    border-radius: 6px;
+    color: red;
+    text-shadow: 0 0 6px red;
+    transition: 0.2s;
+}
+
+body.red-mode .file {
+    text-decoration: none;
+    display: block;
+    margin: 6px 0 6px 10px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid red;
+    border-radius: 6px;
+    color: white;
+    text-shadow: 0 0 8px red;
+    transition: 0.2s;
+}
+
+body.red-mode .folder.small:hover {
+    background: rgba(0,0,0,0.22);
+}
+
+body.red-mode .file:hover {
+    background: rgba(0,0,0,0.22);
+}
+
+body.red-mode .subject:hover {
+    background: rgba(0,0,0,0.22);
+}
+
+@media screen and (max-width: 768px) {
+body.red-mode #musicBtn {
+        position: relative;
+        display: block;
+        margin: 10px auto;
+        width: 60%;
+        text-align: center;
+        left: auto;
+        top: auto;
+    }
+}
+
+/* For WebKit (Chrome, Edge, Safari) */
+body.red-mode ::-webkit-scrollbar,
+body.red-mode .content::-webkit-scrollbar,
+body.red-mode .sidebar::-webkit-scrollbar,
+body.red-mode .top-scroll::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+body.red-mode ::-webkit-scrollbar-track,
+body.red-mode .content::-webkit-scrollbar-track,
+body.red-mode .sidebar::-webkit-scrollbar-track,
+body.red-mode .top-scroll::-webkit-scrollbar-track {
+    background: #120000; 
+    border-radius: 10px;
+}
+
+body.red-mode ::-webkit-scrollbar-thumb,
+body.red-mode .content::-webkit-scrollbar-thumb,
+body.red-mode .sidebar::-webkit-scrollbar-thumb,
+body.red-mode .top-scroll::-webkit-scrollbar-thumb {
+    background: #FF3131;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(255,0,40,0.8);
+}
+
+body.red-mode ::-webkit-scrollbar-thumb:hover,
+body.red-mode .content::-webkit-scrollbar-thumb:hover,
+body.red-mode .sidebar::-webkit-scrollbar-thumb:hover,
+body.red-mode .top-scroll::-webkit-scrollbar-thumb:hover {
+    background: #FF5A5A;
+}
+
+/* Firefox */
+body.red-mode .content,
+body.red-mode .sidebar,
+body.red-mode .top-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #FF3131 #120000; /* thumb / track */
+}
+
+/* ⚡GLITCH GLITCH GLITCH EFFECT */
+@keyframes glitchShake {
+    0% { transform: translate(0,0) skew(0deg); }
+    20% { transform: translate(-2px,2px) skew(-2deg); }
+    40% { transform: translate(2px,-2px) skew(2deg); }
+    60% { transform: translate(-1px,1px) skew(-1deg); }
+    80% { transform: translate(1px,-1px) skew(1deg); }
+    100% { transform: translate(0,0) skew(0deg); }
+}
+
+.glitch {
+    animation: glitchShake 0.35s linear infinite;
+    filter: brightness(1.4) contrast(1.3);
 }
 
 
