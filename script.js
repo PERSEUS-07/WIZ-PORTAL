@@ -115,7 +115,7 @@ if (logo && toast) {
     logo.addEventListener("click", () => {
         logoClicks++;
 
-        if (logoClicks === 5) {
+        if (logoClicks === 15) {
 
             // Show toast
             toast.textContent = "🔴 RED MODE ACTIVATED";
@@ -219,4 +219,5 @@ function setActiveSidebar() {
 // call on page load
 setActiveSidebar();
 window.addEventListener("hashchange", setActiveSidebar);
+
 
