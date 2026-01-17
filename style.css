@@ -482,7 +482,7 @@ body {
 
 /* 🔴RED RED RED RED RED MODE OVERRIDE */
 body.red-mode {
-    background-color: #120000;
+    background-color: #11202E;
 }
 
 body.red-mode header {
@@ -726,5 +726,6 @@ body.red-mode .top-scroll {
     animation: glitchShake 0.35s linear infinite;
     filter: brightness(1.4) contrast(1.3);
 }
+
 
 
