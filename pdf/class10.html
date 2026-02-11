@@ -14,18 +14,64 @@
     WizKlub Study Portal
     <div id="clock"></div>
     <div id="greeting"></div>
+        <button id="musicToggle">▶ Play Music</button>
+    <button id="settingsBtn">⚙️</button>
+<div id="themePanel">
+
+    <!-- Main Menu -->
+    <div id="settingsMenu">
+        <h3>⚙️ Settings</h3>
+
+        <button class="settings-item" onclick="openThemePicker()">
+            🎨 Theme Color
+        </button>
+
+<button class="settings-item" onclick="openMusic()">
+    🎵 Sound Controls
+</button>
+
+    </div>
+
+    <!-- Color Picker Page -->
+    <div id="themePicker" class="hidden">
+        <button class="backBtn" onclick="backToMenu()">⬅ Back</button>
+        <h3>Pick Your Color</h3>
+        <input type="color" id="colorPicker">
+    </div>
+
+    <!-- Music Controls -->
+<div id="musicSection" class="hidden" style="margin-top:12px;">
+        <button class="backBtn" onclick="backToMenu()">⬅ Back</button>
+        <hr>
+        <h3>🎵 Music</h3>
+        <label class="volume-label">🔊 Volume</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01">
+    </div>
+
+</div>
+<div class="ai-wrapper">
+  <button id="aiBtn" class="ai-btn">🤖 AI Hub</button>
+
+  <div id="aiPanel" class="ai-panel hidden">
+    <h3>🤖 Choose Your AI⤵︎</h3>
+
+    <button class="ai-option" data-link="https://chatgpt.com">💬 ChatGPT</button>
+    <button class="ai-option" data-link="https://gemini.google.com">✨ Gemini</button>
+    <button class="ai-option" data-link="https://www.perplexity.ai">🧠 Perplexity</button>
+  </div>
+</div>
 </header>
 
 <audio id="bgMusic" loop>
     <source src="../music/study.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn">▶ Play Music</button>
+ 
 
 
 <div class="sidebar">
     <a href="../index.html#home">🏘️Home</a>
-    <a href="../index.html#ncert">📖NCERT Books</a>
+<li id="nav-ncert"><a href="../index.html#ncert">📖NCERT Books</a></li>
     <a href="../index.html#notes">📄Notes & Materials</a>
     <a href="../index.html#extra">✨Extra Study Stuff</a>
     <a href="../index.html#wiz">🤖WizKlub Special</a>
@@ -76,7 +122,6 @@
 
 
 </div>
-<div id="easterToast"></div>
 <script src="../script.js"></script>
 </body>
 </html>
