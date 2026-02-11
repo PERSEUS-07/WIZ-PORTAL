@@ -6,7 +6,7 @@
   const hash = window.location.hash.toLowerCase();
 
   const isIndexPage =
-    path.endsWith("/") ||
+    path.endsWith("WIZ-PORTAL/") ||
     path.endsWith("index.html") ||
     path === "/" ||
     path === "";
@@ -245,5 +245,6 @@
       closeAllPanels();
     }
   });
+
 
 
