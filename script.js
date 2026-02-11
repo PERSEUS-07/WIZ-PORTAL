@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
 
   // ===============================
   // PAGE DETECTION
@@ -246,4 +245,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-});
