@@ -5,14 +5,16 @@
   const path = window.location.pathname.toLowerCase();
   const hash = window.location.hash.toLowerCase();
 
-  const isIndexPage =
-    path.endsWith("WIZ-PORTAL/") ||
-    path.endsWith("index.html") ||
+ const isIndexPage =
+  path.endsWith("/") ||
+  path.endsWith("/index.html");
+
     path === "/" ||
     path === "";
 
   const isClassPage = path.includes("/pdf/class");
   const isComingSoon = path.includes("comingsoon");
+
 
   // ===============================
   // FOLDER TOGGLE (CLASS PAGES)
@@ -245,6 +247,7 @@
       closeAllPanels();
     }
   });
+
 
 
 
