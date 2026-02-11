@@ -1,4 +1,4 @@
-
+console.log("PATHNAME =", window.location.pathname);
   // ===============================
   // PAGE DETECTION
   // ===============================
@@ -247,6 +247,7 @@
       closeAllPanels();
     }
   });
+
 
 
 
