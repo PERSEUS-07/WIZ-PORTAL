@@ -12,24 +12,71 @@
     WizKlub Study Portal
     <div id="clock"></div>
     <div id="greeting"></div>
+        <button id="musicToggle">▶ Play Music</button>
+    <button id="settingsBtn">⚙️</button>
+<div id="themePanel">
+
+    <!-- Main Menu -->
+    <div id="settingsMenu">
+        <h3>⚙️ Settings</h3>
+
+        <button class="settings-item" onclick="openThemePicker()">
+            🎨 Theme Color
+        </button>
+
+<button class="settings-item" onclick="openMusic()">
+    🎵 Sound Controls
+</button>
+
+    </div>
+
+    <!-- Color Picker Page -->
+    <div id="themePicker" class="hidden">
+        <button class="backBtn" onclick="backToMenu()">⬅ Back</button>
+        <h3>Pick Your Color</h3>
+        <input type="color" id="colorPicker">
+    </div>
+
+    <!-- Music Controls -->
+<div id="musicSection" class="hidden" style="margin-top:12px;">
+        <button class="backBtn" onclick="backToMenu()">⬅ Back</button>
+        <hr>
+        <h3>🎵 Music</h3>
+        <label class="volume-label">🔊 Volume</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01">
+    </div>
+
+</div>
+<div class="ai-wrapper">
+  <button id="aiBtn" class="ai-btn">🤖 AI Hub</button>
+
+  <div id="aiPanel" class="ai-panel hidden">
+    <h3>🤖 Choose Your AI⤵︎</h3>
+
+    <button class="ai-option" data-link="https://chatgpt.com">💬 ChatGPT</button>
+    <button class="ai-option" data-link="https://gemini.google.com">✨ Gemini</button>
+    <button class="ai-option" data-link="https://www.perplexity.ai">🧠 Perplexity</button>
+  </div>
+</div>
 </header>
 
 <audio id="bgMusic" loop>
     <source src="music/study.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn">▶ Play Music</button>
-
     <div class="sidebar">
         <a onclick="show('home')">🏘️Home</a>
-        <a onclick="show('ncert')">📖NCERT Books</a>
+<li id="nav-ncert"><a onclick="show('ncert')">📖NCERT Books</a></li>
         <a onclick="show('notes')">📄Notes & Materials</a>
         <a onclick="show('extra')">✨Extra Study Stuff</a>
         <a onclick="show('wiz')">🤖WizKlub Special</a>
+
     </div>
 
-    <div class="content">
+</div>
 
+    <div class="content">
+        
         <!-- HOME -->
         <div id="home" class="section active">
             <h1>HOME</h1>
@@ -43,6 +90,7 @@
         <li>📂 Click folders to expand subjects and books.</li>
         <li>🧭 Use the sidebar to switch sections.</li>
         <li>🎵 Click Play Music button to enable study music.</li>
+        <li>⚙️ Click ⚙️Settings to change the color and adjust the music volume.</li>
     </ul>
 </div>
         </div>
@@ -95,7 +143,6 @@
         </div>
 
     </div>
-<div id="easterToast"></div>
 
 
 <script src="script.js"></script>
