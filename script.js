@@ -1,223 +1,249 @@
-function toggle(id) {
-    const section = document.getElementById(id);
-    section.style.display = section.style.display === "block" ? "none" : "block";
-}
+document.addEventListener("DOMContentLoaded", () => {
 
+  // ===============================
+  // PAGE DETECTION
+  // ===============================
+  const path = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
 
-function show(id) {
-    // Hide all sections
-    document.querySelectorAll('.section').forEach(s =>
-        s.classList.remove('active')
-    );
+  const isIndexPage =
+    path.endsWith("index.html") ||
+    path === "/" ||
+    path === "";
 
-    // Show target section
+  const isClassPage = path.includes("/pdf/class");
+  const isComingSoon = path.includes("comingsoon");
+
+  // ===============================
+  // FOLDER TOGGLE (CLASS PAGES)
+  // ===============================
+  window.toggle = function (id) {
     const target = document.getElementById(id);
-    if (target) target.classList.add('active');
+    if (target) target.classList.toggle("open");
+  };
 
-    // 🔥 Active sidebar highlight
-    document.querySelectorAll(".sidebar a").forEach(btn => {
-        btn.classList.remove("active");
-    });
+  // ===============================
+  // SECTION NAVIGATION (INDEX ONLY)
+  // ===============================
+  window.show = function (id) {
+    if (!isIndexPage) return;
 
-    const activeBtn = document.querySelector(`.sidebar a[onclick="show('${id}')"]`);
-    if (activeBtn) activeBtn.classList.add("active");
+    document.querySelectorAll(".section")
+      .forEach(s => s.classList.remove("active"));
 
-    // Update URL hash
+    const target = document.getElementById(id);
+    if (target) target.classList.add("active");
+
+    document.querySelectorAll(".sidebar a")
+      .forEach(a => a.classList.remove("active"));
+
+    const btn = document.querySelector(
+      `.sidebar a[onclick="show('${id}')"]`
+    );
+    if (btn) btn.classList.add("active");
+
     history.replaceState(null, null, "#" + id);
-}
+  };
 
+  function loadFromHash() {
+    if (!isIndexPage) return;
+    const section = window.location.hash.replace("#", "") || "home";
+    show(section);
+  }
 
+  if (isIndexPage) {
+    loadFromHash();
+    window.addEventListener("hashchange", loadFromHash);
+  }
 
-document.addEventListener("click", function(e) {
-    const target = e.target.closest("a, .folder, .file");
+  // ===============================
+  // SIDEBAR HIGHLIGHT LOGIC
+  // ===============================
+  document.querySelectorAll(".sidebar a")
+    .forEach(a => a.classList.remove("active"));
 
-    if (!target) return;
+  if (isIndexPage) {
+    const section = hash.replace("#", "") || "home";
+    document
+      .querySelector(`.sidebar a[onclick="show('${section}')"]`)
+      ?.classList.add("active");
+  }
 
-    target.classList.add("click-animate");
+  if (isClassPage) {
+    document
+      .querySelector("#nav-ncert a")
+      ?.classList.add("active");
+  }
 
-    setTimeout(() => {
-        target.classList.remove("click-animate");
-    }, 120);
-});
+  // ===============================
+  // CLOCK + GREETING
+  // ===============================
+  function updateClock() {
+    const clock = document.getElementById("clock");
+    const greeting = document.getElementById("greeting");
+    if (!clock || !greeting) return;
 
-function updateClock() {
     const now = new Date();
+    const h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, "0");
+    const s = now.getSeconds().toString().padStart(2, "0");
+    const ampm = h >= 12 ? "PM" : "AM";
+    const displayHour = h % 12 || 12;
 
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
-    let ampm = hours >= 12 ? "PM" : "AM";
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-    hours = hours % 12 || 12;
+    clock.textContent =
+      `${displayHour}:${m}:${s} ${ampm}  |  ${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    if (h < 12) greeting.textContent = "🌅 Good Morning, Wiz Explorer";
+    else if (h < 18) greeting.textContent = "🌤️ Study Mode Activated";
+    else greeting.textContent = "🌙 Late Night Grind Mode";
+  }
 
-    const date = now.toDateString();
+  updateClock();
+  setInterval(updateClock, 1000);
 
-    document.getElementById("clock").innerHTML =
-        `${hours}:${minutes}:${seconds} ${ampm} | ${date}`;
-}
+  // ===============================
+  // SETTINGS PANEL
+  // ===============================
+  const settingsBtn = document.getElementById("settingsBtn");
+  const themePanel = document.getElementById("themePanel");
+  const settingsMenu = document.getElementById("settingsMenu");
+  const themePicker = document.getElementById("themePicker");
+  const colorPicker = document.getElementById("colorPicker");
+  const musicSection = document.getElementById("musicSection");
 
-setInterval(updateClock, 1000);
-updateClock();
+  function closeAllPanels() {
+    if (aiPanel) aiPanel.classList.add("hidden");
+    if (themePanel) themePanel.style.display = "none";
+  }
 
-document.addEventListener("click", function(e) {
-    const target = e.target.closest(".folder, .file, .subject, .sidebar a, button, a");
-    if (!target) return;
+  if (settingsBtn && themePanel) {
+    settingsBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = themePanel.style.display === "block";
+      closeAllPanels();
+      if (!isOpen) themePanel.style.display = "block";
+    });
+  }
 
-    target.classList.add("ripple");
+  window.openThemePicker = () => {
+    if (!settingsMenu || !themePicker) return;
+    settingsMenu.classList.add("hidden");
+    themePicker.classList.remove("hidden");
+  };
 
-    const circle = document.createElement("span");
-    const rect = target.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
+  window.openMusic = () => {
+    if (!settingsMenu || !musicSection) return;
+    settingsMenu.classList.add("hidden");
+    musicSection.classList.remove("hidden");
+  };
 
-    circle.style.width = circle.style.height = size + "px";
-    circle.style.left = (e.clientX - rect.left - size / 2) + "px";
-    circle.style.top = (e.clientY - rect.top - size / 2) + "px";
+  window.backToMenu = () => {
+    themePicker?.classList.add("hidden");
+    musicSection?.classList.add("hidden");
+    settingsMenu?.classList.remove("hidden");
+  };
 
-    target.appendChild(circle);
+  // ===============================
+  // THEME ENGINE
+  // ===============================
+  function setTheme(color) {
+    document.documentElement.style.setProperty("--accent", color);
+    localStorage.setItem("themeColor", color);
+  }
 
-    setTimeout(() => circle.remove(), 600);
-});
+  if (colorPicker) {
+    const savedColor = localStorage.getItem("themeColor") || "#34FFD7";
+    setTheme(savedColor);
+    colorPicker.value = savedColor;
 
+    colorPicker.addEventListener("input", e => {
+      setTheme(e.target.value);
+    });
+  }
 
-const music = document.getElementById("bgMusic");
-const btn = document.getElementById("musicBtn");
+  // ===============================
+  // MUSIC CONTROLS
+  // ===============================
+  const music = document.getElementById("bgMusic");
+  const musicToggle = document.getElementById("musicToggle");
+  const volumeSlider = document.getElementById("volumeSlider");
 
-btn.onclick = () => {
-    if (music.paused) {
+  if (music && musicToggle && volumeSlider) {
+    music.volume = localStorage.getItem("musicVolume") || 0.5;
+    volumeSlider.value = music.volume;
+
+    musicToggle.addEventListener("click", () => {
+      if (music.paused) {
         music.play();
-        btn.innerText = "⏸ Pause Music";
-    } else {
+        musicToggle.innerText = "⏸ Pause";
+      } else {
         music.pause();
-        btn.innerText = "▶ Play Music";
-    }
-};
-
-
-const slider = document.querySelector('.top-scroll');
-
-if (slider) {
-    slider.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        slider.scrollLeft += e.deltaY;
+        musicToggle.innerText = "▶ Play Music";
+      }
     });
-}
 
+    volumeSlider.addEventListener("input", e => {
+      music.volume = e.target.value;
+      localStorage.setItem("musicVolume", e.target.value);
+    });
+  }
 
-// 🥚 Easter Egg: Click logo 15 times (Flying Toast)
-let logoClicks = 0;
-const logo = document.querySelector(".header-logo");
-const toast = document.getElementById("easterToast");
+  // ===============================
+  // LOGO EASTER EGG
+  // ===============================
+  const logo = document.querySelector(".header-logo");
+  let clicks = 0;
+  let timer;
 
-if (logo && toast) {
+  if (logo) {
     logo.addEventListener("click", () => {
-        logoClicks++;
+      clicks++;
+      clearTimeout(timer);
+      timer = setTimeout(() => clicks = 0, 700);
 
-        if (logoClicks === 15) {
-
-            // Show toast
-            toast.textContent = "🔴 RED MODE ACTIVATED";
-            toast.classList.remove("show");
-            void toast.offsetWidth;
-            toast.classList.add("show");
-
-// Toggle red mode properly
-document.body.classList.toggle("red-mode");
-
-if (document.body.classList.contains("red-mode")) {
-    localStorage.setItem("redMode", "on");
-} else {
-    localStorage.removeItem("redMode");
-}
-
-            logoClicks = 0;
-        }
+      if (clicks === 4) {
+        logo.classList.add("glitch");
+        setTimeout(() => logo.classList.remove("glitch"), 1200);
+        clicks = 0;
+      }
     });
-}
+  }
 
+  // ===============================
+  // AI HUB
+  // ===============================
+  const aiBtn = document.getElementById("aiBtn");
+  const aiPanel = document.getElementById("aiPanel");
 
-// ⚡ Quad Click Header → Glitch Mode
-let glitchClicks = 0;
-let glitchTimer;
-
-if (logo) {
-    logo.addEventListener("click", () => {
-        glitchClicks++;
-
-        clearTimeout(glitchTimer);
-
-        glitchTimer = setTimeout(() => {
-            glitchClicks = 0;
-        }, 700); // reset if user pauses too long
-
-        if (glitchClicks === 4) {
-            logo.classList.add("glitch");
-
-            setTimeout(() => {
-                logo.classList.remove("glitch");
-            }, 1200);
-
-            glitchClicks = 0;
-        }
+  if (aiBtn && aiPanel) {
+    aiBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = !aiPanel.classList.contains("hidden");
+      closeAllPanels();
+      if (!isOpen) aiPanel.classList.remove("hidden");
     });
-}
+  }
 
+  document.querySelectorAll(".ai-option").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const link = btn.getAttribute("data-link");
+      window.open(link, "_blank");
+      aiPanel?.classList.add("hidden");
+    });
+  });
 
-
-// 🌞 Time Based Greeting
-function updateGreeting() {
-    const hour = new Date().getHours();
-    const greetingEl = document.getElementById("greeting");
-
-    if (!greetingEl) return;
-
-    let message = "";
-
-    if (hour >= 5 && hour < 12) {
-        message = "🌅 Good Morning, Wiz Explorer";
-    } 
-    else if (hour >= 12 && hour < 18) {
-        message = "🌇 Study Mode Activated (EVEN IN MIDDAY???)";
-    } 
-    else {
-        message = "🌙 Late Night Grind Mode";
+  document.addEventListener("click", (e) => {
+    if (
+      (!aiPanel || !aiPanel.contains(e.target)) &&
+      (!themePanel || !themePanel.contains(e.target)) &&
+      e.target !== aiBtn &&
+      e.target !== settingsBtn
+    ) {
+      closeAllPanels();
     }
+  });
 
-    greetingEl.textContent = message;
-}
-
-updateGreeting();
-
-if (localStorage.getItem("redMode") === "on") {
-    document.body.classList.add("red-mode");
-}
-
-function setActiveSidebar() {
-    const hash = window.location.hash.replace("#","") || "home"; // fallback to home
-    const sidebarLinks = document.querySelectorAll(".sidebar a");
-
-    sidebarLinks.forEach(link => {
-        link.classList.remove("active");
-
-        // check both href and onclick targets
-        const hrefHash = (link.getAttribute("href") || "").replace("../index.html#","").replace("#","");
-        const onclickTarget = link.getAttribute("onclick")?.match(/show\('(\w+)'\)/)?.[1];
-
-        if (hrefHash === hash || onclickTarget === hash) {
-            link.classList.add("active");
-        }
-    });
-
-    // Show the correct section too
-    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-    const targetSection = document.getElementById(hash);
-    if (targetSection) targetSection.classList.add("active");
-}
-
-// call on page load
-setActiveSidebar();
-window.addEventListener("hashchange", setActiveSidebar);
-
-
+});
