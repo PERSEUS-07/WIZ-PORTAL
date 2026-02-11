@@ -212,9 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===============================
+  // ==============================
   // AI HUB
-  // ===============================
+  // ==============================
   const aiBtn = document.getElementById("aiBtn");
   const aiPanel = document.getElementById("aiPanel");
 
